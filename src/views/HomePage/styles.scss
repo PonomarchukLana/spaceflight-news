@@ -1,0 +1,25 @@
+$secondaryColor: "#757575";
+
+.home-page {
+    &__container {
+       padding: 50px 75px;
+    }
+
+    &__count {
+        display: flex;
+        margin-top: 45px !important;
+    }
+
+    &__icon {
+        color: $secondaryColor;
+    }
+
+    &__cards-section {
+        margin-left: -45px;
+    }
+
+    &__cards {
+        padding-left: 45px;
+        padding-top: 45px;
+    }
+}
