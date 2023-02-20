@@ -9,6 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { getArticleById } from "./articleByIdSlice";
+import { useNavigate } from 'react-router-dom'; 
 import "./styles.scss";
 
 const BackButton = styled(Button)({
@@ -21,6 +22,7 @@ const ArticlePage = () => {
     const data = useAppSelector(state => state.articleByIdSlice.data);
     const dataStatus = useAppSelector(state => state.articleByIdSlice.status);
     let { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (id) {
@@ -46,7 +48,7 @@ const ArticlePage = () => {
                         </Paper>
                     </Box>
                     <CardActions className="article-page__back-btn">
-                        <BackButton variant="text" size="small" onClick={() => window.location.replace(`/`)}>Back to homepage</BackButton>
+                        <BackButton variant="text" size="small" onClick={() => navigate("/")}>Back to homepage</BackButton>
                     </CardActions>
                 </Container>}
         </>
