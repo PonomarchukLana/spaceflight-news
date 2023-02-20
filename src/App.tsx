@@ -1,9 +1,10 @@
-import React, { lazy } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
+import loadable from '@loadable/component'
 import "./App.css";
 
-const HomePage = lazy(() => import("./views/HomePage"));
-const ArticlePage = lazy(() => import("./views/ArticlePage"));
+const HomePage = loadable(() => import("./views/HomePage"));
+const ArticlePage = loadable(() => import("./views/ArticlePage"));
 
 function App() {
   return (

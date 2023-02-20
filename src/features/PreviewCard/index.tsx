@@ -8,6 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
+import { useNavigate } from 'react-router-dom'; 
 import "./styles.scss";
 
 const MoreButton = styled(Button)({
@@ -26,6 +27,8 @@ type Props = {
 
 const PreviewCard = ({ id, keywords, img, date, title, summary }: Props) => {
 
+    const navigate = useNavigate();
+
     const highlightMatchingText = (text: string, textToMatch: string[]): JSX.Element[] => {
         const matchRegex = RegExp(textToMatch.join('|'), "ig");
         const matches = [...text.matchAll(matchRegex)];
@@ -38,7 +41,7 @@ const PreviewCard = ({ id, keywords, img, date, title, summary }: Props) => {
     };
 
     return (
-        <Card className="card__wrapper">
+        <Card className="card__wrapper" onClick={() => navigate(`/article/${id}`)}>
             <div>
                 <CardMedia
                     component="img"
@@ -60,7 +63,7 @@ const PreviewCard = ({ id, keywords, img, date, title, summary }: Props) => {
                 </CardContent>
             </div>
             <CardActions>
-                <MoreButton variant="text" size="small" onClick={() => window.location.replace(`/article/${id}`)}>Read More</MoreButton>
+                <MoreButton variant="text" size="small">Read More</MoreButton>
             </CardActions>
         </Card>
     );
